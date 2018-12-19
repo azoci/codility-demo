@@ -79,4 +79,28 @@ public final class Solution {
     //4.max값을 리턴함
     return max;
   }
+
+  public static int[] solution_cyclic(int[] A, int K) {
+    if(A.length < 1) {
+      return null;
+    }
+    //1.shift값 저장 배열 선언
+    int[] shift = new int[A.length];
+
+    //2.반복 제거
+    int rK = K % A.length;
+    //3.K값 만큼 오른쪽 이동
+    for(int i=0; i < A.length; i++) {
+
+      //4.index가 넘어가는 경우 앞으로 이동
+      if(i+rK >= A.length) {
+        shift[i+rK - A.length] =  A[i];
+      } else {
+        shift[i+rK] = A[i];
+      }
+    }
+    //5.shift된 배열 리턴
+    return shift;
+  }
+
 }
